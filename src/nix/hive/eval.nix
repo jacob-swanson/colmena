@@ -127,6 +127,7 @@ let
       hasTypedConfig = lib.versionAtLeast lib.version "22.11pre";
     in {
       nixpkgs.overlays = lib.mkBefore npkgs.overlays;
+      nixpkgs.hostPlatform = lib.mkBefore npkgs.hostPlatform;
       nixpkgs.config = if hasTypedConfig then lib.mkBefore npkgs.config else lib.mkOptionDefault npkgs.config;
 
       warnings = let
